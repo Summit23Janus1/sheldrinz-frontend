@@ -1,0 +1,49 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sheldrinz-sheldrinz-poi-map-app-dev
+  annotations:
+    argocd/app-name: sheldrinz-sheldrinz-poi-map-app-dev
+    backstage.io/kubernetes-id: sheldrinz-sheldrinz-poi-map-app-dev
+    backstage.io/kubernetes-namespace: sheldrinz
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/instance=sheldrinz-sheldrinz-poi-map-app-dev'
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: Summit23Janus1/sheldrinz-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.summit23rock.n26o.p1.openshiftapps.com/dev-pipelines/ns/sheldrinz/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.summit23rock.n26o.p1.openshiftapps.com/k8s/ns/sheldrinz/deployments/sheldrinz-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.summit23rock.n26o.p1.openshiftapps.com/#https://github.com/Summit23Janus1/sheldrinz-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://sheldrinz-poi-map-app-sheldrinz.apps.summit23rock.n26o.p1.openshiftapps.com
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/sheldrinzhu"
+  system: workshop-system-sheldrinz
+  consumesApis:
+    - gateway-api-sheldrinz
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-sheldrinz
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:default/sheldrinzhu"
